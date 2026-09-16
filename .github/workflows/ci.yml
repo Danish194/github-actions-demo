@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Node.js Docker CI
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  test:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,3 +23,6 @@ jobs:
 
       - name: Run tests
         run: npm test
+
+      - name: Build Docker image
+        run: docker build -t github-actions-demo:latest .
